@@ -174,19 +174,26 @@ $imagedir = get_bloginfo( 'template_url' );
 					<?php
 					$args              = array(
 						'post_type'   => 'cpt_events',
-						'post_status' => 'future',
+						'post_status' => 'published',
 						'showposts'   => 4,
-						'order'       => 'ASC'
+						'order'       => 'ASC',
+                        'meta_query' => array(
+                            array(
+                                'key' => 'event_start_date',
+                                'value' => date( 'Y-m-d' ),
+                                'compare' => '>=', // Upcoming Events/Same Day
+                                'type' => 'DATETIME'
+                            )
+                        )
 					);
-					$the__events_query = new WP_Query( $args );
-
 
 					global $post;
 					$eventsposts = get_posts( $args );
 					foreach ( $eventsposts as $post ) : ?>
+                        <?php $date = date( 'M j, Y', strtotime( get_field( 'event_start_date' ) ) ); ?>
 						<li>
-							<h3><?php the_time( 'M j, Y' ); ?> - <?php the_title(); ?>
-								<small><?php the_time(); ?></small>
+							<h3><?php echo $date; ?> - <?php the_title(); ?>
+								<small><?php echo ( get_field( 'event_start_time' ) !== '' ? get_field( 'event_start_time' ) : '' ); ?></small>
 							</h3>
 							<a href="<?php the_permalink(); ?>" class="viewmore">View More</a></li>
 					<?php endforeach; ?>
