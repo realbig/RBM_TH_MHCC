@@ -57,7 +57,6 @@ Template:       Moses
 #header {
     h1#branding a {
         /*text-shadow: 0px 1px 2px #fff, -3px -3px 4px #CE0000;*/
-        color: #F7F7F7;
         text-decoration: none;
         font-size: 2.3em;
         width: 100%;
@@ -65,7 +64,6 @@ Template:       Moses
     }
     
     h2 {
-        color: #ffffff;
         text-shadow: -2px -2px 2px #000;
         font-size: 24px;
         width: 150px;
@@ -78,34 +76,29 @@ Template:       Moses
 }
 
 #page_wrapper_outer {
-    background: #46403c;
     height: 245px;
 }
 
-#site_info_wrap {
-    background: #46403c;
-}
-
 #nav > .menu-header > ul > li > a, #nav > .home-button > ul > li > a {
-    background: #59524c;
-    border-left: 1px solid #46403c;
-    border-right: 1px solid #46403c;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-right-width: 1px;
+    border-right-style: solid;
     width: 161px;
 }
 
 #site_info_wrap, .location a {
-    color: #fff;
     text-shadow: #161616 0px 1px 1px;
 }
 
 #nav > .menu-header > ul > .current-menu-item > a, #nav > .home-button > ul .current_page_item > a {
-    background: #c7a589 none repeat center top;
-    color: #46403c;
+    background: none repeat center top;
     text-shadow: #59524c 0px 1px 1px;
 }
 
 #nav > .menu-header > ul > li > a, #nav > .home-button > ul > li > a {
-    border-top: 1px solid #46403c;
+    border-top-width: 1px;
+    border-top-style: solid;
 }
 
 #nav > .menu-header > ul > li > a:hover, #nav > .home-button > ul > li > a:hover {
@@ -117,7 +110,7 @@ Template:       Moses
 }
 
 body {
-    background: #46403c url("http://mounthopecommunitychurch.com/wp-content/uploads/sites/34/2013/12/HiRes6.png") no-repeat 63% 8%;
+    background: url("http://mounthopecommunitychurch.com/wp-content/uploads/sites/34/2013/12/HiRes6.png") no-repeat 63% 8%;
     background-attachment: fixed;
     color: #303030;
 }
@@ -125,10 +118,6 @@ body {
 .home #section_main {
     padding: 0;
     margin-bottom: 10px;
-}
-
-#nav > .menu-header > ul > li > a, #nav > .home-button > ul > li > a {
-    color: #cdcbc9;
 }
 
 #page {
@@ -176,7 +165,6 @@ body {
     
     &, a {
         font-size: 16px;
-        color: #DFDFDF;
         text-shadow: 2px 2px 1px #000;
     }
     

@@ -25,14 +25,14 @@ add_action( 'wp_enqueue_scripts', function() {
 // Create Inline CSS from Customizer Settings
 add_action( 'wp_head', function() {
     
-    //include( __DIR__ . '/includes/partials/customizer-css.php' );
+    include( __DIR__ . '/includes/partials/customizer-css.php' );
     
 } );
 
 add_action( 'after_setup_theme', function() {
     
     // Add Customizer Controls
-    //add_action( 'customize_register', 'mount_hope_customize_register' );
+    add_action( 'customize_register', 'mount_hope_customize_register' );
         
 } );
 
@@ -44,15 +44,82 @@ function mount_hope_customize_register( $wp_customize ) {
         ) 
     );
     
-    $wp_customize->add_setting( 'mullins_primary_color' , array(
-            'default'     => '#094C8B',
+    $wp_customize->add_setting( 'mount_hope_background' , array(
+            'default'     => '#46403c',
             'transport'   => 'refresh',
         )
     );
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'mullins_primary_color', array(
-        'label'        => __( 'Primary Color', THEME_ID ),
-        'section'    => 'mullins_customizer_section',
-        'settings'   => 'mullins_primary_color',
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'mount_hope_background', array(
+        'label'        => __( 'Background Color', THEME_ID ),
+        'section'    => 'mount_hope_customizer_section',
+        'settings'   => 'mount_hope_background',
+    ) ) );
+    
+    $wp_customize->add_setting( 'mount_hope_site_title' , array(
+            'default'     => '#F7F7F7',
+            'transport'   => 'refresh',
+        )
+    );
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'mount_hope_site_title', array(
+        'label'        => __( 'Site Title Color', THEME_ID ),
+        'section'    => 'mount_hope_customizer_section',
+        'settings'   => 'mount_hope_site_title',
+    ) ) );
+    
+    
+    $wp_customize->add_setting( 'mount_hope_header_footer_text' , array(
+            'default'     => '#ffffff',
+            'transport'   => 'refresh',
+        )
+    );
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'mount_hope_header_footer_text', array(
+        'label'        => __( 'Header/Footer Text Color', THEME_ID ),
+        'section'    => 'mount_hope_customizer_section',
+        'settings'   => 'mount_hope_header_footer_text',
+    ) ) );
+    
+    $wp_customize->add_setting( 'mount_hope_nav_sel_bg' , array(
+            'default'     => '#c7a589',
+            'transport'   => 'refresh',
+        )
+    );
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'mount_hope_nav_sel_bg', array(
+        'label'        => __( 'Selected Navigation Background Color', THEME_ID ),
+        'section'    => 'mount_hope_customizer_section',
+        'settings'   => 'mount_hope_nav_sel_bg',
+    ) ) );
+    
+    $wp_customize->add_setting( 'mount_hope_nav_sel_color' , array(
+            'default'     => '#46403c',
+            'transport'   => 'refresh',
+        )
+    );
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'mount_hope_nav_sel_color', array(
+        'label'        => __( 'Selected Navigation Text Color', THEME_ID ),
+        'section'    => 'mount_hope_customizer_section',
+        'settings'   => 'mount_hope_nav_sel_color',
+    ) ) );
+    
+    $wp_customize->add_setting( 'mount_hope_nav_bg' , array(
+            'default'     => '#59524c',
+            'transport'   => 'refresh',
+        )
+    );
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'mount_hope_nav_bg', array(
+        'label'        => __( 'Navigation Background Color', THEME_ID ),
+        'section'    => 'mount_hope_customizer_section',
+        'settings'   => 'mount_hope_nav_bg',
+    ) ) );
+    
+    $wp_customize->add_setting( 'mount_hope_nav_color' , array(
+            'default'     => '#cdcbc9',
+            'transport'   => 'refresh',
+        )
+    );
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'mount_hope_nav_color', array(
+        'label'        => __( 'Navigation Text Color', THEME_ID ),
+        'section'    => 'mount_hope_customizer_section',
+        'settings'   => 'mount_hope_nav_color',
     ) ) );
     
 }

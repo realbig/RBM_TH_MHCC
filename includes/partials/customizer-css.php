@@ -3,167 +3,71 @@
 
     // This class lets us lighten/darken Hex Colors using HSL, just like SASS.
 
-    $primary_color = get_theme_mod( 'mullins_primary_color', '#094C8B' );
-    $primary_color_object = new Mexitek\PHPColors\Color( $primary_color );
-
-    $secondary_color = get_theme_mod( 'mullins_secondary_color', '#C31A2F' );
-    $secondary_color_object = new Mexitek\PHPColors\Color( $secondary_color );
-
-    $accent_1 = get_theme_mod( 'mullins_accent_1', '#ebebeb' );
-    $accent_1_object = new Mexitek\PHPColors\Color( $accent_1 );
-
-    $accent_2 = get_theme_mod( 'mullins_accent_2', '#D6E0EB' );
-    $accent_2_object = new Mexitek\PHPColors\Color( $accent_2 );
-
-    $background = get_theme_mod( 'mullins_background', '#ffffff' );
+    $background = get_theme_mod( 'mount_hope_background', '#46403c' );
     $background_object = new Mexitek\PHPColors\Color( $background );
+
+    $site_title = get_theme_mod( 'mount_hope_site_title', '#F7F7F7' );
+    $site_title_object = new Mexitek\PHPColors\Color( $site_title );
+
+    $header_footer_text = get_theme_mod( 'mount_hope_header_footer_text', '#ffffff' );
+    $header_footer_text_object = new Mexitek\PHPColors\Color( $header_footer_text );
+
+    $selected_nav_background = get_theme_mod( 'mount_hope_nav_sel_bg', '#c7a589' );
+    $selected_nav_background_object = new Mexitek\PHPColors\Color( $selected_nav_background );
+
+    $selected_nav_text_color = get_theme_mod( 'mount_hope_nav_sel_color', '#46403c' );
+    $selected_nav_text_color_object = new Mexitek\PHPColors\Color( $selected_nav_text_color );
+
+    $nav_background = get_theme_mod( 'mount_hope_nav_bg', '#59524c' );
+    $nav_background_object = new Mexitek\PHPColors\Color( $nav_background );
+
+    $nav_text_color = get_theme_mod( 'mount_hope_nav_color', '#cdcbc9' );
+    $nav_text_color_object = new Mexitek\PHPColors\Color( $nav_text_color );
 ?>
 
 <style type = "text/css">
     
-    /* General */
-    
-    a, .phone-number .fa, a .fa {
-        color: <?php echo $primary_color; ?>;
+    #header h1#branding a {
+        color: <?php echo $site_title; ?>;
     }
     
-    a:hover, .phone-number:hover .fa, a:hover .fa {
-        color: <?php echo $secondary_color; ?>;
+    #header h2 {
+        color: <?php echo $header_footer_text; ?>;
+    }
+    
+    #page_wrapper_outer, #site_info_wrap {
+        background: <?php echo $background; ?>;
+    }
+    
+    #nav > .menu-header > ul > li > a, #nav > .home-button > ul > li > a {
+        background-color: <?php echo $nav_background; ?>;
+        border-left-color: <?php echo $background; ?>;
+        border-right-color: <?php echo $background; ?>;
+    }
+    
+    #site_info_wrap, .location a {
+        color: <?php echo $header_footer_text; ?>;
+    }
+    
+    #nav > .menu-header > ul > .current-menu-item > a, #nav > .home-button > ul .current_page_item > a {
+        background-color: <?php echo $selected_nav_background; ?>;
+        color: <?php echo $selected_nav_text_color; ?>;
+    }
+    
+    #nav > .menu-header > ul > li > a, #nav > .home-button > ul > li > a {
+        border-top-color: <?php echo $background; ?>;
     }
     
     body {
-        background-color: <?php echo $accent_2; ?>;
-    }
-
-    #wrapper {
         background-color: <?php echo $background; ?>;
     }
-
-    /* Header */
     
-    #site-header {
-        background-color: <?php echo $accent_1; ?>;
-        border-bottom-color: <?php echo $secondary_color; ?>;
+    #nav > .menu-header > ul > li > a, #nav > .home-button > ul > li > a {
+        color: <?php echo $nav_text_color; ?>;
     }
     
-    #site-header .top-nav .menu {
-        color: <?php echo $primary_color; ?>;
-    }
-    
-    @media only screen and ( max-width: 40em ) { /* $small-only in _global.scss */
-        #site-header .top-nav .menu > .menu-item {
-            border-top-color: <?php echo $accent_2; ?>;
-        } 
-    }
-    
-    #site-header .top-nav .menu > .menu-item:first-of-type a {
-        border-left-color: <?php echo $accent_2; ?>;
-    }
-    
-    #site-header .top-nav .menu > .menu-item > a {
-        border-right-color: <?php echo $accent_2; ?>;
-    }
-    
-    @media only screen and ( min-width: 40.063em ) { /* $medium-up in _global.scss */
-        #site-header .top-nav .menu > .menu-item:hover > a {
-            background-color: <?php echo $secondary_color; ?>;
-        }
-    }
-    
-    #site-header .top-nav .menu > .menu-item.current-menu-item {
-        background-color: #<?php echo $primary_color_object->darken(5); ?>;
-    }
-    
-    @media only screen and ( min-width: 40.063em ) { /* $medium-up in _global.scss */
-        #site-header .top-nav .sub-menu .menu-item:hover > .sub-menu .menu-item:hover a {
-            background-color: #<?php echo $secondary_color_object->darken(5); ?>;
-        }
-    }
-    
-    #site-header .top-nav .sub-menu a {
-        background-color: <?php echo $primary_color; ?>;
-        border-bottom-color: #<?php echo $primary_color_object->darken(5); ?>;
-    }
-    
-    #site-header .top-nav .sub-menu a + .sub-menu a {
-        background-color: <?php echo $secondary_color; ?>;
-    }
-    
-    #site-header .top-nav .sub-menu a:hover {
-        background-color: #<?php echo $primary_color_object->darken(5); ?>;
-    }
-    
-    /* Realbig Slider */
-    
-    .realbig-slider-container .realbig-slider .arrow:hover {
-        border-color: <?php echo $secondary_color; ?>;
-    }
-    
-    .realbig-slider-container .realbig-slider .indicators li.active {
-        background-color: <?php echo $primary_color; ?>;
-    }
-    
-    .realbig-slider-container .realbig-slider .indicators li:hover {
-        background-color: <?php echo $secondary_color; ?>;
-    }
-    
-    /* Newsletter Signup */
-
-    .widget_custom_mailchimpsf_widget .button, .widget_mailchimpsf_widget .button {
-        color: <?php echo $primary_color; ?>;
-        border-color: <?php echo $primary_color; ?>;
-    }
-    
-    .widget_custom_mailchimpsf_widget, .widget_mailchimpsf_widget {
-        background-color: <?php echo $accent_1; ?>;
-    }
-    
-    /* Footer */
-    
-    #site-footer .primary-nav {
-        background-color: <?php echo $accent_1; ?>;
-        border-bottom-color: <?php echo $accent_2; ?>;
-    }
-    
-    #site-footer .primary-nav .menu > .menu-item {
-        color: <?php echo $primary_color; ?>;
-    }
-    
-    @media only screen and ( min-width: 40.063em ) { /* $medium-up in _global.scss */
-        #site-footer .primary-nav .menu > .menu-item:hover > a {
-            background-color: <?php echo $secondary_color; ?>;
-        }
-    }
-    
-    #site-footer .primary-nav .menu > .menu-item.current-menu-item {
-        background-color: #<?php echo $primary_color_object->darken(5); ?>;
-    }
-    
-    #site-footer .primary-nav .menu > .menu-item:first-of-type a {
-        border-left-color: <?php echo $accent_2; ?>;
-    }
-    
-    #site-footer .primary-nav .menu > .menu-item > a {
-        border-right-color: <?php echo $accent_2; ?>;
-    }
-    
-    @media only screen and ( min-width: 40.063em ) { /* $medium-up in _global.scss */
-        #site-footer .primary-nav .sub-menu .menu-item:hover > .sub-menu .menu-item:hover a {
-            background-color: #<?php echo $secondary_color_object->darken(5); ?>;
-        }
-    }
-    
-    #site-footer .primary-nav .sub-menu a {
-        background-color: <?php echo $primary_color; ?>;
-        border-bottom-color: #<?php echo $primary_color_object->darken(5); ?>;
-    }
-    
-    #site-footer .primary-nav .sub-menu a + .sub-menu a {
-        background-color: <?php echo $secondary_color; ?>;
-    }
-    
-    #site-footer .primary-nav .sub-menu a:hover {
-        background-color: #<?php echo $primary_color_object->darken(5); ?>;
+    #site_map, #site_map a {
+        color: <?php echo $header_footer_text; ?>
     }
 
 </style>
