@@ -32,13 +32,16 @@ get_header(); ?>
 					</div> 
                     
                 <?php
+                    
+                $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
    				        
 				$args = array( 'post_type' => 'cpt_events',
 							   'post_status' => 'published',
 							   'order' => 'ASC',
                               'orderby' => 'meta_value',
                               'meta_type' => 'DATETIME',
-							   'showposts' => 10,
+							   'posts_per_page' => 5,
+                              'paged' => $paged,
                                'meta_query' => array(
                                     array(
                                         'key' => 'event_start_date',
@@ -47,7 +50,14 @@ get_header(); ?>
                                     )
                                 )
                              );
-				query_posts($args);		
+				$upcoming_events = new WP_Query($args);	
+                    
+                // Pagination Fix
+                global $wp_query;
+                $temp_query = $wp_query;
+                $wp_query = NULL;
+                $wp_query = $upcoming_events;
+                    
 				?>
                     
                 <div class="page_content full"> 
@@ -65,8 +75,8 @@ get_header(); ?>
                         </thead> 
                         <tbody> 
          	   
-      	    	<?php if (have_posts()) : ?>
-      	      	<?php while (have_posts()) : the_post(); ?>
+      	    	<?php if ($upcoming_events->have_posts()) : ?>
+      	      	<?php while ($upcoming_events->have_posts()) : $upcoming_events->the_post(); ?>
                     <?php $date = date( 'M j, Y', strtotime( get_field( 'event_start_date' ) ) ); ?>
                                 <tr> 
                                         <td class="posted_on"><?php echo $date; ?><?php echo ( get_field( 'event_start_time' ) !== '' ? ' - ' . get_field( 'event_start_time' ) : '' ); ?></td> 
@@ -88,15 +98,32 @@ get_header(); ?>
                     
                         </tbody> 
                     </table> 
+                    
+                    <?php
+                    
+                    echo paginate_links( array( 
+                        'current' => get_query_var( 'paged' ), // Despite being on the Home Page, since we are in a Custom Loop we use 'paged'
+                    ) );
+                    
+                    wp_reset_postdata();
+    
+                    // Reset main query object after Pagination is done.
+                    $wp_query = NULL;
+                    $wp_query = $temp_query;
+                    
+                    ?>
                             
                     <?php
+                    
+                    $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 
                     $args = array( 'post_type' => 'cpt_events',
                                    'post_status' => 'published',
                                    'order' => 'DESC',
                                   'orderby' => 'meta_value',
                                   'meta_type' => 'DATETIME',
-                                   'showposts' => 10,
+                                   'posts_per_page' => 5,
+                                  'paged' => $paged,
                                    'meta_query' => array(
                                         array(
                                             'key' => 'event_start_date',
@@ -105,7 +132,13 @@ get_header(); ?>
                                         )
                                     )
                                  );
-                    query_posts($args);		
+                    $past_events = new WP_Query($args);		
+                    
+                    // Pagination Fix
+                    global $wp_query;
+                    $temp_query = $wp_query;
+                    $wp_query = NULL;
+                    $wp_query = $past_events;
                     ?>
                     
                     <table id="bloglist"> 
@@ -122,8 +155,8 @@ get_header(); ?>
                         </thead> 
                         <tbody> 
                             
-                            <?php if (have_posts()) : ?>
-                            <?php while (have_posts()) : the_post(); ?>
+                            <?php if ($past_events->have_posts()) : ?>
+                            <?php while ($past_events->have_posts()) : $past_events->the_post(); ?>
                                 <?php $date = date( 'M j, Y', strtotime( get_field( 'event_start_date' ) ) ); ?>
                                         <tr> 
                                                 <td class="posted_on"><?php echo $date; ?><?php echo ( get_field( 'event_start_time' ) !== '' ? ' - ' . get_field( 'event_start_time' ) : '' ); ?></td> 
@@ -141,6 +174,20 @@ get_header(); ?>
                     
                         </tbody> 
                     </table> 
+                    
+                    <?php
+                    
+                    echo paginate_links( array( 
+                        'current' => get_query_var( 'paged' ), // Despite being on the Home Page, since we are in a Custom Loop we use 'paged'
+                    ) );
+                    
+                    wp_reset_postdata();
+    
+                    // Reset main query object after Pagination is done.
+                    $wp_query = NULL;
+                    $wp_query = $temp_query;
+                    
+                    ?>
  
 											
 					</div> <!-- end .page_content.full --> 
