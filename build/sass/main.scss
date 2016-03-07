@@ -1,0 +1,181 @@
+/*!
+Theme Name:     CHILDmhcc-rbwmoses
+Description:    Child theme of Moses from Mint Themes made for Mount Hope Community Church in Jackson, MI.
+Author:         Kyle
+Template:       Moses
+*/
+
+@import "../vendor/sass/base_styles";
+@import "../vendor/sass/reset";
+@import "../vendor/sass/museosans";
+
+.highlights {
+    width: auto;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+.highlights:after {
+    content: ' ';
+    display: table;
+    clear: both;
+}
+.highlights a.highlight {
+    width: 33.3333%;
+    padding: 0 5px;
+    height: auto;
+    box-sizing: border-box;
+    margin: 0;
+}
+.highlights a.highlight img {
+    width: 100%;
+    height: auto;
+}
+.module h2 {
+    margin-left: 18px;
+}
+
+/*Kyle edits*/
+
+#bloglist tbody td {
+    vertical-align: top;
+}
+
+#header h1#branding a {
+    /*text-shadow: 0px 1px 2px #fff, -3px -3px 4px #CE0000;*/
+    color: #F7F7F7;
+    text-decoration: none;
+    font-size: 2.3em;
+    width: 100%;
+    font-family: 'Tangerine', cursive;
+}
+
+.first-letter {
+    font-size: 1.3em;
+}
+
+#page_wrapper_outer {
+    background: #1D003C;
+    height: 245px;
+}
+
+#site_info_wrap {
+    background: #1D003C;
+}
+
+#nav > .menu-header > ul > li > a, #nav > .home-button > ul > li > a {
+    background: #412F77;
+    border-left: 1px solid #24054B;
+    border-right: 1px solid #614E9E;
+    width: 161px;
+}
+
+#header h2 {
+    color: #ffffff;
+    text-shadow: -2px -2px 2px #000;
+    font-size: 24px;
+    width: 150px;
+    margin-top: 0;
+}
+
+#site_info_wrap, .location a {
+    color: #615788;
+    text-shadow: #161616 0px 1px 1px;
+}
+
+#nav > .menu-header > ul > .current-menu-item > a, #nav > .home-button > ul .current_page_item > a {
+    background: #1D003C none repeat center top;
+    color: #6948A3;
+    text-shadow: #694BC9 0px 1px 1px;
+}
+
+#nav > .menu-header > ul > li > a, #nav > .home-button > ul > li > a {
+    border-top: 1px solid #441F86;
+}
+
+#nav > .menu-header > ul > li > a:hover, #nav > .home-button > ul > li > a:hover {
+    opacity: .96;
+}
+
+#page_wrapper, #page_wrapper_outer, #header_wrap {
+    background: transparent;
+}
+
+body {
+    background: #1d003c url("http://mounthopecommunitychurch.com/wp-content/uploads/sites/34/2013/12/HiRes6.png") no-repeat 63% 8%;
+    background-attachment: fixed;
+    color: #303030;
+}
+
+.home #section_main {
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+#nav > .menu-header > ul > li > a, #nav > .home-button > ul > li > a {
+    color: #A3A3A3;
+}
+
+#page {
+    padding: 0px 10px 0px 10px;
+}
+
+.navi, #section_main .navi a {
+    background-color: transparent;
+}
+
+#page_wrapper #page .content, #section_main {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.scrollable .items div.item .text {
+    width: 308px;
+    font-style: italic;
+}
+
+.scrollable .items div.item {
+    width: 980px;
+}
+
+.scrollable {
+    width: 100%;
+}
+
+.navi_wrap {
+    margin-top: -30px;
+    border-top: none;
+}
+
+#site_map, #site_map a {
+    font-size: 16px;
+    color: #DFDFDF;
+    text-shadow: 2px 2px 1px #000;
+}
+
+#legal {
+    font-weight: 500;
+    color: #DADADA;
+}
+
+#legal a {
+    color: #DFB9B9;
+}
+
+#site_map .current_page_item {
+    background: none;
+}
+
+#site_map .current_page_item a {
+    font-weight: bold;
+    text-shadow: 2px 2px 2px #B90606;
+}
+
+/* Eric Edits */
+
+#bloglist thead tr th.heading {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#bloglist {
+    margin-bottom: 2em;
+}

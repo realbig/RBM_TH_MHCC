@@ -14,23 +14,23 @@ module.exports = function (grunt) {
                 livereload: true
             },
             sass: {
-                files: ['assets/sass/**/*.scss', '!assets/sass/admin/**/*.scss'],
+                files: ['build/sass/**/*.scss', '!build/sass/admin/**/*.scss'],
                 tasks: ['sass:front', 'autoprefixer:front', 'notify:sass']
             },
             sass_admin: {
-                files: ['assets/sass/admin/**/*.scss'],
+                files: ['build/sass/admin/**/*.scss'],
                 tasks: ['sass:admin', 'autoprefixer:admin', 'notify:sass_admin']
             },
             js: {
-                files: ['assets/js/*.js'],
+                files: ['build/js/*.js'],
                 tasks: ['uglify:front', 'notify:js']
             },
             js_admin: {
-                files: ['assets/js/admin/*.js'],
+                files: ['build/js/admin/*.js'],
                 tasks: ['uglify:admin', 'notify:js_admin']
             },
             livereload: {
-                files: ['**/*.html', '**/*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}', '!**/*ajax*.php']
+                files: ['**/*.html', '**/*.php', 'build/images/**/*.{png,jpg,jpeg,gif,webp,svg}', '!**/*ajax*.php']
             }
         },
 
@@ -41,12 +41,12 @@ module.exports = function (grunt) {
             },
             front: {
                 files: {
-                    'style.css': 'assets/sass/main.scss'
+                    'style.css': 'build/sass/main.scss'
                 }
             },
             admin: {
                 files: {
-                    'admin.css': 'assets/sass/admin/admin.scss'
+                    'admin.css': 'build/sass/admin/admin.scss'
                 }
             }
         },
@@ -73,18 +73,18 @@ module.exports = function (grunt) {
                 files: {
                     'script.js': [
                         // Theme scripts
-                        'assets/js/*.js'
+                        'build/js/*.js'
                     ]
                 }
             },
             admin: {
                 files: {
                     'admin.js': [
-                        'assets/js/admin/*.js',
-                        '!assets/js/admin/customizer.js'
+                        'build/js/admin/*.js',
+                        '!build/js/admin/customizer.js'
                     ],
                     'customizer.js': [
-                        'assets/js/admin/customizer.js'
+                        'build/js/admin/customizer.js'
                     ]
                 }
             }
