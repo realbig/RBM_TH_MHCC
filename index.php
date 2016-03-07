@@ -154,9 +154,13 @@ $imagedir = get_bloginfo( 'template_url' );
 			$sermonposts = get_posts( $args );
 			foreach ( $sermonposts as $post ) : ?>
 				<p>Latest Sermon: <?php the_title(); ?> - <?php the_time( 'F j, Y' ); ?></p>
-				<a href="<?php if ( get_option( "cap_mp3_php" ) == "true" ) { ?><?php echo get_template_directory_uri(); ?>/includes/mp3.php?file=<?php echo str_replace( 'listen/', '?', get_post_meta( $post->ID, 'sermonmp3', true ) ); ?>&fname=<?php echo get_the_title(); ?><?php } else {
-					echo get_post_meta( $post->ID, 'sermonmp3', true );
-				} ?>" target="_blank" id="downloadlatestsermon">Download Latest Sermon</a>
+				<a href="<?php 
+                         if ( get_option( "cap_mp3_php" ) == "true" ) { ?>
+                            <?php echo get_template_directory_uri(); ?>/includes/mp3.php?file=<?php echo str_replace( 'listen/', '?', get_post_meta( $post->ID, 'sermonmp3', true ) ); ?>&fname=<?php echo get_the_title(); ?><?php 
+                          } 
+                         else {
+                             echo get_post_meta( $post->ID, 'sermonmp3', true );
+                         } ?>" target="_blank" id="downloadlatestsermon">Download Latest Sermon</a>
 			<?php endforeach; ?>
 			<div class="hr">
 				<hr/>
@@ -189,14 +193,19 @@ $imagedir = get_bloginfo( 'template_url' );
 
 					global $post;
 					$eventsposts = get_posts( $args );
-					foreach ( $eventsposts as $post ) : ?>
-                        <?php $date = date( 'M j, Y', strtotime( get_field( 'event_start_date' ) ) ); ?>
-						<li>
-							<h3><?php echo $date; ?> - <?php the_title(); ?>
-								<small><?php echo ( get_field( 'event_start_time' ) !== '' ? get_field( 'event_start_time' ) : '' ); ?></small>
-							</h3>
-							<a href="<?php the_permalink(); ?>" class="viewmore">View More</a></li>
-					<?php endforeach; ?>
+                     if ( count( $eventsposts ) > 0 ) {
+                        foreach ( $eventsposts as $post ) : ?>
+                            <?php $date = date( 'M j, Y', strtotime( get_field( 'event_start_date' ) ) ); ?>
+                            <li>
+                                <h3><?php echo $date; ?> - <?php the_title(); ?>
+                                    <small><?php echo ( get_field( 'event_start_time' ) !== '' ? get_field( 'event_start_time' ) : '' ); ?></small>
+                                </h3>
+                                <a href="<?php the_permalink(); ?>" class="viewmore">View More</a></li>
+                        <?php endforeach;
+                    }
+                    else {
+                        echo '<li>No Upcoming Events</l1>';
+                    } ?>
 
 				</ul>
 
